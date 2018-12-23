@@ -36,9 +36,7 @@ for i in range(col):
     GRID.append(column)
     
 
-for j in range(row):
-    for i in range(col):
-            GRID[i][j]._draw(screen)
+
 
 
 while True:
@@ -52,19 +50,21 @@ while True:
                     pygame.display.set_mode(size)
                 else:
                     pygame.display.set_mode(size, pygame.FULLSCREEN)
+
         
+        x,y = pygame.mouse.get_pos()        
+        #check for mouse hover and
+        #HASH function to store cell with its coordinates
         for j in range(row):
             for i in range(col):
                 GRID[i][j]._draw(screen)
+                GRID[i][j].detect_mouse(x,y)    
 
-        x,y = pygame.mouse.get_pos()
-        left_mouse, idk, right_mouse = pygame.mouse.get_pressed() #b1 is left click, b2 is right click
-        
-        #check for mouse hover
-        for j in range(row):
-            for i in range(col):
-                GRID[i][j].detect_mouse(x,y, left_mouse, right_mouse)
-                #GRID[i][j].pressed_mouse(x, y, b1, b3)
+        mouse_pos = pygame.mouse.get_pos()
+
+    
+                
+           
 
                 
 

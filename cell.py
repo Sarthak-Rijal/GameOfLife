@@ -28,14 +28,28 @@ class cell(object):
         if (self.DOA):
             self.color = (0,0,0)
 
-    def detect_mouse(self, x, y, left, right):
-        if (self.rect.collidepoint(x,y)):
-            self.color = (0,0,0)
-        else:
-            self.color = (192, 192, 192)
 
-    def changeDOA(self):
-        self.DOA = not self.DOA
+
+
+    def detect_mouse(self, x, y):
+        if (self.rect.collidepoint(x,y)):
+            self.alive()
+            if (pygame.mouse.get_pressed() == (1,0,0)):
+                self.alive()
+            elif(pygame.mouse.get_pressed() == (0,0,1)):
+                print(pygame.mouse.get_pressed())
+                self.dead()
+        else: 
+            self.dead()
+
+
+    def dead(self):
+        self.DOA = False
+        self.color = (192,192,192)
+
+    def alive(self):
+        self.DOA = True
+        self.color = (0,0,0)
 
 
             
