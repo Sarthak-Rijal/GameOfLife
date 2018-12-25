@@ -7,8 +7,7 @@ pygame.init()
 class cell(object): 
     # Function to initialise the node object 
     def __init__(self, screen, DOA, x, y, coor_x, coor_y, pressed = False, size = 40,
-                                                 color = (0,0,0), margin = 5, neighbours = []):
-        self.margin = margin
+                                                 color = (0,0,0), neighbours = []):
         self.x = x
         self.y = y
         self.coor_x = coor_x
@@ -68,20 +67,35 @@ class cell(object):
     def toString(self):
         return str(self.x)+","+str(self.y)
 
-    def update(self):
+    def update_toDie(self):
+        alive_near = self.countAliveNeighbour()
+        if (self.DOA == True):           
+            if (alive_near == 0 or alive_near == 1):
+                return [self.x,self.y]
+            if (alive_near > 3):
+                return [self.x,self.y]
+            else:
+                return []
+        else:
+            return []
+
+    def update_toLive(self):
         alive_near = self.countAliveNeighbour()
         if (self.DOA == False):
             if (alive_near == 3):
-                self.pressedAlive()
+                return [self.x,self.y]
+            else:
+                return []
+        else:
+            return []
         if (self.DOA == True):
-            if (alive_near == 2 and alive_near == 3):
-                self.pressedAlive()            
-            if (alive_near == 0 or alive_near == 1):
-                self.dead()
-            if (alive_near > 3):
-                self.dead()
+            if (alive_near == 2 or alive_near == 3):
+                return [self.x,self.y]
+            else:
+                return []
+        else:
+            return[]
 
-            
             
 
 
