@@ -6,8 +6,8 @@ pygame.init()
 # cell class
 class cell(object): 
     # Function to initialise the node object 
-    def __init__(self, screen, DOA, x, y, coor_x, coor_y, pressed = False, size = 40,
-                                                 color = (0,0,0), neighbours = []):
+    def __init__(self, screen, DOA, x, y, coor_x, coor_y, color, size, pressed = False,
+                                                   neighbours = []):
         self.x = x
         self.y = y
         self.coor_x = coor_x
@@ -36,17 +36,18 @@ class cell(object):
     def dead(self):
         self.pressed = False
         self.DOA = False
-        self.color = (192,192,192)
+        self.color = (255,255,255)
 
     #makes the cell alive
     def potentiallyAlive(self):
-        self.color = (0,0,0)
+        self.color = (random.randrange(0,255), random.randrange(0,255),random.randrange(0,255))
+
 
     #makes the cell alive when clicked
     def pressedAlive(self):
         self.pressed = True
         self.DOA = True
-        self.color = (0,0,0)
+        self.color = (random.randrange(0,255), random.randrange(0,255),random.randrange(0,255))
 
     
     def addNeigbour(self, neighbour):
@@ -106,8 +107,6 @@ class cell(object):
     # 2) Any live cell with two or three live neighbors lives on to the next generation.
     # 3) Any live cell with more than three live neighbors dies, as if by overpopulation.
     # 4) Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
-
-        
 
    #def countNeighbout(self): need to count neighbours
        
