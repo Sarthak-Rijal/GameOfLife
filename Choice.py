@@ -33,11 +33,11 @@ class Choice(object):
 
 
 
-    def print_f(self,screen, msg,siz,color):#,x,y):
-        Text = pygame.font.Font("freesansbold.ttf",20)
+    def print_f(self,screen,msg,color):#,x,y):
+        Text = pygame.font.Font("freesansbold.ttf", 50)
         write = Text.render(msg,True,color)
         write_rect = write.get_rect()
-        write_rect.center = ((x),(y))
+        write_rect.center = ((self.x+self.x/11),(self.y + self.y/12))
         screen.blit(write,write_rect)
 
     def update(self, screen):
@@ -46,7 +46,7 @@ class Choice(object):
 
         pygame.draw.rect(screen, (252 + .025, 247, 18), rect)
 
-        self.print_f(screen, self.msg, width = rect[2], height = rect[3],BLACK)
+        self.print_f(screen, self.msg, (0,0,0))
 
 
         

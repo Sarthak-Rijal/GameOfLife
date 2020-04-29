@@ -1,5 +1,5 @@
 from cell import cell
-from btn import *
+from Choice import *
 import pygame
 import sys
 import random
@@ -62,7 +62,7 @@ def play(pressed, f):
     
     CELL_SIZE = GRID_DATA[-1]
     ROW = (size[1])/CELL_SIZE #rows #original 30
-    COL = ((size[0] - (size[0]/10)) /CELL_SIZE)    
+    COL = ((size[0] - (size[0]/7)) /CELL_SIZE)    
     readData(GRID, GRID_DATA, COL, ROW, CELL_SIZE)
 
     
@@ -95,7 +95,7 @@ def play(pressed, f):
     
 
     
-    file = ["0)Empty", "1)Pulsar", "2)Glider", "3)Glider-Gun", "4)Hammerhead", "5)LinePuffer", "6)Box", "7)Smile", "8)Fish Face", "9)Tony"]
+    file = ["Empty", "Pulsar", "Glider", "Glider-Gun", "Hammerhead", "LinePuffer", "Box", "Smile", "Fish Face", "Tony"]
 
 
     #
@@ -159,7 +159,7 @@ def play(pressed, f):
     
     Buttons = []
     for i in range(10):
-        Buttons.append(btn((size[0] - (size[0]/10)), (i*160)+1, (size[0]/10), 160, file[i], 80, i))
+        Buttons.append(Choice((size[0] - (size[0]/7)), (i*160)+1, (size[0]/7), 160, file[i], 80, i))
 
 
     toLive = []
