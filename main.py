@@ -46,9 +46,9 @@ def play(pressed, f):
 
 #comment out when doing #Load Grid
 ##############################################################################################
-    CELL_SIZE = 40
-    ROW = (size[1])/CELL_SIZE #rows #original 30
-    COL = ((size[0] - (size[0]/10)) /CELL_SIZE) #creates the space in the side
+    # CELL_SIZE = 40
+    # ROW = (size[1])/CELL_SIZE #rows #original 30
+    # COL = ((size[0] - (size[0]/10)) /CELL_SIZE) #creates the space in the side
 
 #LOAD GRID
 ###################################################################################################
@@ -61,8 +61,8 @@ def play(pressed, f):
         GRID_DATA = pickle.load(file)
     
     CELL_SIZE = GRID_DATA[-1]
-    ROW = (size[1])/CELL_SIZE #rows #original 30
-    COL = ((size[0] - (size[0]/7)) /CELL_SIZE)    
+    ROW = int((size[1])/CELL_SIZE) #rows #original 30
+    COL = int((size[0] - (size[0]/7)) /CELL_SIZE)    
     readData(GRID, GRID_DATA, COL, ROW, CELL_SIZE)
 
     
@@ -78,15 +78,7 @@ def play(pressed, f):
     """
     GRID_DATA = []
     for i in range(COL):
-        data = []
-        for j in range(ROW):
-            data.append([False])
-
-        GRID_DATA.append(data)
-    GRID_DATA.append(CELL_SIZE)
-
-    readData(GRID, GRID_DATA, COL, ROW, CELL_SIZE)
-    """
+  """
 
     
 
